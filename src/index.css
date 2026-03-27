@@ -1,0 +1,428 @@
+/* ─── CSS Reset ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Theme Variables ─────────────────────────────────────────────────────── */
+:root {
+  --bg-primary: #0f0e17;
+  --bg-secondary: #1a1a2e;
+  --bg-card: #16213e;
+  --bg-card-hover: #1e2d52;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0b8;
+  --text-muted: #6b6b80;
+  --accent-blue: #4a90d9;
+  --accent-blue-dim: rgba(74, 144, 217, 0.15);
+  --accent-blue-border: rgba(74, 144, 217, 0.35);
+  --accent-gold: #d4a843;
+  --accent-gold-dim: rgba(212, 168, 67, 0.15);
+  --accent-red: #e74c3c;
+  --accent-red-dim: rgba(231, 76, 60, 0.15);
+  --nav-height: 64px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+
+  /* Fretboard / SVG component colors */
+  --fb-wood: #3d2b1f;
+  --fb-wood-light: #4a3428;
+  --fb-string: #c0c0c0;
+  --fb-string-dark: #888888;
+  --fb-fret: #d4a843;
+  --fb-fret-glow: #f0c060;
+  --fb-dot-hover: #5aa8f0;
+  --fb-root-hover: #ff6b5b;
+  --fb-marker: #6b5040;
+  --fb-marker-bright: #8a6850;
+  --fb-barre: rgba(74, 144, 217, 0.55);
+  --fb-barre-border: #4a90d9;
+  --fb-hover: rgba(255, 255, 255, 0.07);
+  --fb-palm: #3a2a1a;
+  --fb-palm-light: #4a3828;
+  --nav-bg: #16213e;
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --overlay-dim: rgba(0, 0, 0, 0.15);
+  --overlay-subtle: rgba(255, 255, 255, 0.04);
+  --overlay-hover: rgba(255, 255, 255, 0.08);
+  --knuckle-stroke: rgba(255, 255, 255, 0.08);
+  --fingernail: rgba(255, 255, 255, 0.15);
+  --inactive-fill: rgba(255, 255, 255, 0.08);
+  --progress-track: rgba(255, 255, 255, 0.08);
+
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Light Theme ────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-primary: #f5f5f0;
+  --bg-secondary: #e8e6df;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f0eb;
+  --text-primary: #1a1a2e;
+  --text-secondary: #555566;
+  --text-muted: #888899;
+  --accent-blue: #2b6cb0;
+  --accent-blue-dim: rgba(43, 108, 176, 0.12);
+  --accent-blue-border: rgba(43, 108, 176, 0.3);
+  --accent-gold: #b8860b;
+  --accent-gold-dim: rgba(184, 134, 11, 0.12);
+  --accent-red: #c0392b;
+  --accent-red-dim: rgba(192, 57, 43, 0.12);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  --fb-wood: #d4b896;
+  --fb-wood-light: #e0c8a8;
+  --fb-string: #666666;
+  --fb-string-dark: #999999;
+  --fb-fret: #b8860b;
+  --fb-fret-glow: #d4a843;
+  --fb-dot-hover: #3a7cc0;
+  --fb-root-hover: #e05040;
+  --fb-marker: #c8b8a0;
+  --fb-marker-bright: #b0a088;
+  --fb-barre: rgba(43, 108, 176, 0.45);
+  --fb-barre-border: #2b6cb0;
+  --fb-hover: rgba(0, 0, 0, 0.04);
+  --fb-palm: #e8d8c8;
+  --fb-palm-light: #f0e0d0;
+  --nav-bg: #ffffff;
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --overlay-dim: rgba(0, 0, 0, 0.06);
+  --overlay-subtle: rgba(0, 0, 0, 0.03);
+  --overlay-hover: rgba(0, 0, 0, 0.06);
+  --knuckle-stroke: rgba(0, 0, 0, 0.1);
+  --fingernail: rgba(0, 0, 0, 0.08);
+  --inactive-fill: rgba(0, 0, 0, 0.06);
+  --progress-track: rgba(0, 0, 0, 0.08);
+
+  color: var(--text-primary);
+  background: var(--bg-primary);
+}
+
+/* ─── Body & Root ─────────────────────────────────────────────────────────── */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── App Shell ───────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* ─── Page Layout ─────────────────────────────────────────────────────────── */
+.page {
+  padding: 20px 16px;
+  min-height: 100%;
+  animation: page-enter 200ms ease forwards;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Typography ──────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #5aa0e8;
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-blue-border);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: var(--accent-blue-dim);
+}
+
+.btn-gold {
+  background: var(--accent-gold);
+  color: #0f0e17;
+}
+
+.btn-gold:hover {
+  background: #e0b84f;
+}
+
+/* ─── Cards ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--accent-blue-border);
+}
+
+/* ─── Badges ──────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-beginner {
+  background: rgba(39, 174, 96, 0.2);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.badge-intermediate {
+  background: var(--accent-gold-dim);
+  color: var(--accent-gold);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+}
+
+.badge-advanced {
+  background: var(--accent-red-dim);
+  color: var(--accent-red);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* ─── Progress Bar ────────────────────────────────────────────────────────── */
+.progress-bar-track {
+  background: var(--progress-track);
+  border-radius: 99px;
+  overflow: hidden;
+  height: 6px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), #6ab3f5);
+  border-radius: 99px;
+  transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Section Headers ─────────────────────────────────────────────────────── */
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ─── Divider ─────────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 16px 0;
+}
+
+/* ─── Filter Tabs ─────────────────────────────────────────────────────────── */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-tab {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.filter-tab:active {
+  transform: scale(0.96);
+}
+
+.filter-tab.active {
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border-color: var(--accent-blue-border);
+}
+
+/* ─── Custom Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 144, 217, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 144, 217, 0.6);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 144, 217, 0.4) var(--bg-secondary);
+}
+
+/* ─── Safe Area Utilities ─────────────────────────────────────────────────── */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Utility Classes ─────────────────────────────────────────────────────── */
+.text-center { text-align: center; }
+.text-accent { color: var(--accent-blue); }
+.text-gold { color: var(--accent-gold); }
+.text-muted { color: var(--text-muted); }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.w-full { width: 100%; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
